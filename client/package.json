@@ -13,7 +13,7 @@
     "chart.js": "^4.4.1",
     "date-fns": "^3.0.6",
      "webpack": "^5.104.1",
-    "webpack-cli": "^5.1.4",
+    "webpack-cli": "^5.1.4"
   },
   "devDependencies": {
     "css-loader": "^6.8.1",

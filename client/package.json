@@ -11,15 +11,15 @@
   "dependencies": {
     "axios": "^1.6.2",
     "chart.js": "^4.4.1",
-    "date-fns": "^3.0.6"
+    "date-fns": "^3.0.6",
+     "webpack": "^5.104.1",
+    "webpack-cli": "^5.1.4",
   },
   "devDependencies": {
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.6.0",
     "http-server": "^14.1.1",
     "style-loader": "^3.3.3",
-    "webpack": "^5.104.1",
-    "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   }
 }

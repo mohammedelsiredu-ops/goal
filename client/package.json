@@ -1,0 +1,25 @@
+{
+  "name": "nicotine-client",
+  "version": "2.0.0",
+  "description": "Nicotine Client - Frontend Application",
+  "private": true,
+  "scripts": {
+    "start": "webpack serve --mode development --open",
+    "build": "webpack --mode production",
+    "serve": "http-server dist -p 3001"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "chart.js": "^4.4.1",
+    "date-fns": "^3.0.6"
+  },
+  "devDependencies": {
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "html-webpack-plugin": "^5.6.0",
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.3",
+    "http-server": "^14.1.1"
+  }
+}

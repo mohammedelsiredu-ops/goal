@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicotine - Clinic Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="login-screen">
+            <div class="login-container">
+                <div class="login-header">
+                    <div class="logo">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
+                            <circle cx="25" cy="25" r="23" stroke="#2563eb" stroke-width="2"/>
+                            <path d="M25 15 L25 35 M17 25 L33 25" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h1>Nicotine</h1>
+                    <p class="tagline" data-translate="clinic-management">Clinic Management System</p>
+                </div>
+                <div class="login-body">
+                    <div id="loginError" class="error-message"></div>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label data-translate="username">Username</label>
+                            <input type="text" id="username" required autocomplete="username">
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="password">Password</label>
+                            <input type="password" id="password" required autocomplete="current-password">
+                        </div>
+                        <button type="submit" class="btn-primary" data-translate="login">Login</button>
+                    </form>
+                    <div class="language-selector">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="ar">AR</button>
+                        <button class="lang-btn" data-lang="de">DE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard -->
+        <div id="dashboard" class="dashboard" style="display: none;">
+            <nav class="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo-small">
+                        <svg width="30" height="30" viewBox="0 0 50 50" fill="none">
+                            <circle cx="25" cy="25" r="23" stroke="#2563eb" stroke-width="2"/>
+                            <path d="M25 15 L25 35 M17 25 L33 25" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h2>Nicotine</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item active" data-page="dashboard">
+                        <i class="icon">📊</i>
+                        <span data-translate="dashboard">Dashboard</span>
+                    </li>
+                    <li class="nav-item" data-page="patients">
+                        <i class="icon">👥</i>
+                        <span data-translate="patients">Patients</span>
+                    </li>
+                    <li class="nav-item" data-page="analytics" data-role="doctor,admin,superadmin">
+                        <i class="icon">📈</i>
+                        <span data-translate="analytics">Analytics</span>
+                    </li>
+                    <li class="nav-item" data-page="nursing" data-role="nurse,admin">
+                        <i class="icon">💉</i>
+                        <span data-translate="nursing">Nursing Orders</span>
+                    </li>
+                    <li class="nav-item" data-page="lab" data-role="lab,admin">
+                        <i class="icon">🔬</i>
+                        <span data-translate="lab">Laboratory</span>
+                    </li>
+                </ul>
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <div class="user-avatar">👤</div>
+                        <div class="user-info">
+                            <div class="user-name" id="userName">User</div>
+                            <div class="user-role" id="userRole">Role</div>
+                        </div>
+                    </div>
+                    <button class="btn-logout" id="logoutBtn" data-translate="logout">Logout</button>
+                </div>
+            </nav>
+
+            <main class="main-content">
+                <header class="top-bar">
+                    <div class="page-title">
+                        <h1 id="pageTitle" data-translate="dashboard">Dashboard</h1>
+                    </div>
+                    <div class="header-actions">
+                        <div class="language-selector">
+                            <button class="lang-btn-small active" data-lang="en">EN</button>
+                            <button class="lang-btn-small" data-lang="ar">AR</button>
+                            <button class="lang-btn-small" data-lang="de">DE</button>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="content-area">
+                    <!-- Dashboard Page -->
+                    <div id="dashboardPage" class="page active">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon blue">👥</div>
+                                <div class="stat-details">
+                                    <h3 id="statPatients">0</h3>
+                                    <p data-translate="total-patients">Total Patients</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon green">💉</div>
+                                <div class="stat-details">
+                                    <h3 id="statOrders">0</h3>
+                                    <p data-translate="pending-orders">Pending Orders</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon purple">📅</div>
+                                <div class="stat-details">
+                                    <h3 id="statToday">0</h3>
+                                    <p data-translate="today-visits">Today's Visits</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="welcome-message">
+                            <h2 data-translate="welcome">Welcome to Nicotine</h2>
+                            <p data-translate="welcome-desc">Professional clinic management at your fingertips</p>
+                        </div>
+                    </div>
+
+                    <!-- Patients Page -->
+                    <div id="patientsPage" class="page">
+                        <div class="page-header">
+                            <button class="btn-primary" id="newPatientBtn" data-translate="new-patient">New Patient</button>
+                            <input type="text" class="search-input" id="patientSearch" data-translate-placeholder="search-patients" placeholder="Search patients...">
+                        </div>
+                        <div id="patientsList" class="content-grid"></div>
+                    </div>
+
+                    <!-- Analytics Page -->
+                    <div id="analyticsPage" class="page">
+                        <div class="analytics-filters">
+                            <input type="text" id="diagnosisFilter" data-translate-placeholder="filter-diagnosis" placeholder="Filter by diagnosis">
+                            <select id="genderFilter">
+                                <option value="">All Genders</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            <input type="number" id="ageMinFilter" data-translate-placeholder="min-age" placeholder="Min Age">
+                            <input type="number" id="ageMaxFilter" data-translate-placeholder="max-age" placeholder="Max Age">
+                            <button class="btn-primary" id="applyFiltersBtn" data-translate="apply-filters">Apply Filters</button>
+                        </div>
+                        <div class="analytics-summary">
+                            <h3 data-translate="summary">Summary</h3>
+                            <div id="analyticsSummary"></div>
+                        </div>
+                        <div class="analytics-chart">
+                            <canvas id="diagnosisChart"></canvas>
+                        </div>
+                        <div id="analyticsResults" class="content-grid"></div>
+                    </div>
+
+                    <!-- Nursing Page -->
+                    <div id="nursingPage" class="page">
+                        <div class="page-header">
+                            <h2 data-translate="pending-nursing-orders">Pending Nursing Orders</h2>
+                        </div>
+                        <div id="nursingOrdersList" class="content-grid"></div>
+                    </div>
+
+                    <!-- Lab Page -->
+                    <div id="labPage" class="page">
+                        <div class="page-header">
+                            <h2 data-translate="lab-test-catalog">Lab Test Catalog</h2>
+                        </div>
+                        <div id="labTestsList" class="content-grid"></div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Patient Modal -->
+        <div id="patientModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 data-translate="patient-details">Patient Details</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="patientForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-translate="full-name">Full Name *</label>
+                                <input type="text" id="patientName" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-translate="gender">Gender *</label>
+                                <select id="patientGender" required>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-translate="dob">Date of Birth</label>
+                                <input type="date" id="patientDOB">
+                            </div>
+                            <div class="form-group">
+                                <label data-translate="phone">Phone *</label>
+                                <input type="tel" id="patientPhone" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="allergies">Allergies</label>
+                            <input type="text" id="patientAllergies" data-translate-placeholder="allergies-placeholder" placeholder="e.g., Penicillin, Nuts">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn-primary" data-translate="save">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
